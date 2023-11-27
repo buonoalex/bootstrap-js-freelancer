@@ -30,12 +30,26 @@ elementoConsulenza.addEventListener("submit",function(event){
     //View Screen
     document.getElementById("contenitorePrezzoFinale").classList.remove("d-none");
 
+    //Inizio Somma e controllo
     switch(choiceWorktoDo){
 
         case "1":
             if(discountArray.includes(discountCode)){
+
+                //Inserimento in sconti gia usati per futura verifica
                 usedDiscountArray.push(discountCode);
+
+                //Verifica Inserimento in Array
+                console.log(usedDiscountArray);
+
+                //Applicare lo sconto del 25 %
+                totalprize = sumForHours(hourstoWork,backEndPrizeForHour);
+                let totalPrizeWithDiscount = applyDiscount(totalprize,25);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalPrizeWithDiscount;
+
             }else{
+                
+                //Applicare somma normale 
                 totalprize = sumForHours(hourstoWork,backEndPrizeForHour);
                 document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
             }
@@ -43,8 +57,21 @@ elementoConsulenza.addEventListener("submit",function(event){
 
         case "2":
             if(discountArray.includes(discountCode)){
+
+                //Inserimento in sconti gia usati per futura verifica
                 usedDiscountArray.push(discountCode);
+
+                //Verifica Inserimento in Array
+                console.log(usedDiscountArray);
+
+                //Applicare lo sconto del 25 %
+                totalprize = sumForHours(hourstoWork,frontEndPrizeForHour);
+                let totalPrizeWithDiscount = applyDiscount(totalprize,25);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalPrizeWithDiscount;
+
             }else{
+
+                //Applicare somma normale 
                 totalprize = sumForHours(hourstoWork,frontEndPrizeForHour);
                 document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
             }
@@ -52,8 +79,21 @@ elementoConsulenza.addEventListener("submit",function(event){
 
         case "3":
             if(discountArray.includes(discountCode)){
+
+                //Inserimento in sconti gia usati per futura verifica
                 usedDiscountArray.push(discountCode);
+
+                //Verifica Inserimento in Array
+                console.log(usedDiscountArray);
+
+                //Applicare lo sconto del 25 %
+                totalprize = sumForHours(hourstoWork,designAnalysisPrizeForHour);
+                let totalPrizeWithDiscount = applyDiscount(totalprize,25);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalPrizeWithDiscount;
+
             }else{
+
+                //Applicare somma normale 
                 totalprize = sumForHours(hourstoWork,designAnalysisPrizeForHour);
                 document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
             }
@@ -79,4 +119,9 @@ elementoConsulenza.addEventListener("submit",function(event){
 function sumForHours(hourswork,prizeWork){
     let total = hourswork * prizeWork;
     return total.toFixed(2);
+}
+
+function applyDiscount(numbertoApplyDiscount , howMuchDiscounttoApply){
+    let finalTotalafterDicount = numbertoApplyDiscount - ((numbertoApplyDiscount * howMuchDiscounttoApply) / 100);
+    return finalTotalafterDicount;
 }
