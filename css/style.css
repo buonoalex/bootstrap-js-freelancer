@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.logo1{
+    width: 25%;
+}
+
+.text-smaller{
+    font-size: smaller;
+}
+
+
+.text-xxsmaller{
+    font-size:xx-small;
+}
