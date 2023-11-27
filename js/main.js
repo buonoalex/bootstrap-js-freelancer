@@ -45,9 +45,8 @@ elementoConsulenza.addEventListener("submit",function(event){
                  totalprize = sumForHours(hourstoWork,backEndPrizeForHour);
                  
                  document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
-                 alert("Furbetto hai gia inserito il codice");
-                 document.getElementById("inputDCode").classList.add("bg-danger");
-                 document.getElementById("inputDCode").innerHTML = "";
+                 alert("Furbetto hai gia inserito il codice ti verrà applicata la tariffa piena");
+                 
 
             }else if(discountArray.includes(discountCode)){
 
@@ -82,9 +81,8 @@ elementoConsulenza.addEventListener("submit",function(event){
                 totalprize = sumForHours(hourstoWork,frontEndPrizeForHour);
                 
                 document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
-                alert("Furbetto hai gia inserito il codice");
+                alert("Furbetto hai gia inserito il codice ti verrà applicata la tariffa piena");
                 document.getElementById("inputDCode").classList.add("bg-danger");
-                document.getElementById("inputDCode").innerHTML = "";
 
             }else if(discountArray.includes(discountCode)){
 
@@ -120,9 +118,9 @@ elementoConsulenza.addEventListener("submit",function(event){
                  totalprize = sumForHours(hourstoWork,designAnalysisPrizeForHour);
                  
                  document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
-                 alert("Furbetto hai gia inserito il codice");
+                 alert("Furbetto hai gia inserito il codice ti verrà applicata la tariffa piena");
                  document.getElementById("inputDCode").classList.add("bg-danger");
-                 document.getElementById("inputDCode").innerHTML = "";
+                 
 
             }else if(discountArray.includes(discountCode)){
 
@@ -150,8 +148,11 @@ elementoConsulenza.addEventListener("submit",function(event){
         break;
 
     }
+    
 
 });
+
+//--------------------FUNCTION----------------------
 
 function sumForHours(hourswork,prizeWork){
     let total = 0;
@@ -164,6 +165,8 @@ function applyDiscount(numbertoApplyDiscount , howMuchDiscounttoApply){
     return finalTotalafterDicount.toFixed(2);
 }
 
+//--------------------FUNCTION clear form-------------------
+
 const bottonClearForm = document.getElementById("bottonClearForm");
 bottonClearForm.addEventListener("click",function(event){
     event.preventDefault();
@@ -171,6 +174,7 @@ bottonClearForm.addEventListener("click",function(event){
     document.getElementById("contenitorePrezzoFinale").classList.add("d-none");
     document.getElementById("inputDCode").classList.remove("bg-danger");
     document.getElementById("inputDCode").classList.remove("bg-success");
+    document.getElementById("totaleSommaLavoro").innerHTML = "";
 });
 
 //-----------SUPERBONUS------------
@@ -188,6 +192,8 @@ inizializesectionCard("Submarine Webside","./img/submarine.png")
 printObjectArrayInDom(arrayCard);
 console.log(arrayCard);
 
+//------------------Function SuperBonus---------------------
+
 function inizializesectionCard(TitoloCard,ImgCard){
     let card = {
         title : TitoloCard,
@@ -203,7 +209,7 @@ function printObjectArrayInDom(arrayObject){
         <div class="col-12 col-md-5 col-lg-3">
 
             <div class="card">
-            <img src="${card.ImgCard}" class="card-img-top img-fluid" alt="...">
+            <img src=${card.ImgCard} class="card-img-top img-fluid" alt="...">
 
                 <div class="card-body">
 
