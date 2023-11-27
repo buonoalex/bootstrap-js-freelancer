@@ -27,13 +27,38 @@ elementoConsulenza.addEventListener("submit",function(event){
     let choiceWorktoDo = document.getElementById("selezioneConsulenzaLavoro").value;
     let hourstoWork = document.getElementById("inputHours").value;
 
+    //View Screen
+    document.getElementById("contenitorePrezzoFinale").classList.remove("d-none");
+
     switch(choiceWorktoDo){
+
         case "1":
             if(discountArray.includes(discountCode)){
                 usedDiscountArray.push(discountCode);
             }else{
                 totalprize = sumForHours(hourstoWork,backEndPrizeForHour);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
             }
+        break;
+
+        case "2":
+            if(discountArray.includes(discountCode)){
+                usedDiscountArray.push(discountCode);
+            }else{
+                totalprize = sumForHours(hourstoWork,frontEndPrizeForHour);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
+            }
+        break;
+
+        case "3":
+            if(discountArray.includes(discountCode)){
+                usedDiscountArray.push(discountCode);
+            }else{
+                totalprize = sumForHours(hourstoWork,designAnalysisPrizeForHour);
+                document.getElementById("totaleSommaLavoro").innerHTML = totalprize;
+            }
+        break;
+
     }
 
 
@@ -53,5 +78,5 @@ elementoConsulenza.addEventListener("submit",function(event){
 
 function sumForHours(hourswork,prizeWork){
     let total = hourswork * prizeWork;
-    return total;
+    return total.toFixed(2);
 }
